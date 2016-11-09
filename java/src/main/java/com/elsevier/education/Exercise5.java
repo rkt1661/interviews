@@ -8,13 +8,25 @@ TODO: Turn the "Singleton" class into an actual singleton. The main() method sho
 public class Exercise5 {
 	
 	public static class Singleton {
+		
+	   private static Singleton instance;
+    
+           private Singleton(){}
+    
+	    public static synchronized Singleton getInstance(){
+		if(instance == null){
+		    instance = new Singleton();
+		}
+		return instance;
+	    }
+		
 		public void doSomeThing() {
 			System.out.println("Doing something....");
 	    }
 	}
 		
 	public static void main(String a[]){
-		Singleton st = new Singleton();
+		Singleton st = Singleton.getInstance();
 		st.doSomeThing();
 	}
 }
