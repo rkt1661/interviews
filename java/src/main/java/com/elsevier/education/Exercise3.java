@@ -13,7 +13,7 @@ public class Exercise3 {
 
 	public static void main(String[] args) {
 	
-		Set<Person> people = new HashSet<>();
+		Set<Person> people = new HashSet<Person>();
 	
 		Person p1 = new Person(1);
 		people.add(p1);
@@ -33,11 +33,21 @@ public class Exercise3 {
 		}
 		
 		public int hashCode() {
-			return id * generator.nextInt();
+			return id ;
 		}
 		
 		public boolean equals(Object other) {
-			return id.equals(((Person)other).id);
+			boolean result = false;
+		if (other == null || other.getClass() != getClass()) {
+			result = false;
+		} else {
+			Person person = (Person) other;
+			if (this.id.compareTo(person.id)==0) {
+				result = true;
+			}
+		}
+		return result
+			
 		}
 	}
 }
